@@ -7,37 +7,41 @@ import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Stream8 {
 
-    public static List<Integer> returnSquareRoot(List<Integer> numbers){
-        throw new NotImplementedException();
+    public static List<Integer> returnSquareRoot(List<Integer> numbers) {
+        return numbers.stream().map(Math::sqrt).map(Math::ceil).
+        // return numbers.stream().map(Math::sqrt).mapToInt(Integer::intValue).collect(Collectors.toList());
     }
 
     public static List<Integer> getAgeFromUsers(List<User> user){
-        throw new NotImplementedException();
+        return user.stream().map(User::getAge).collect(Collectors.toList());
     }
 
     public static List<Integer> getDistinctAges(List<User> users){
-        throw new NotImplementedException();
+        return users.stream().map(User::getAge).distinct().collect(Collectors.toList());
     }
 
     public static List<User> getLimitedUserList(List<User> users, int limit){
-        throw new NotImplementedException();
+        return users.stream().limit(limit).collect(Collectors.toList());
     }
 
     public static Integer countUsersOlderThen25(List<User> users){
-        throw new NotImplementedException();
+        return (int) users.stream().map(User::getAge).filter(age -> age > 25).count();
     }
 
     public static List<String> mapToUpperCase(List<String> strings){
-        throw new NotImplementedException();
+        return strings.stream().map(String::toUpperCase).collect(Collectors.toList());
     }
 
     public static Integer sum(List<Integer> integers){
-        throw new NotImplementedException();
+        // return integers.stream().mapToInt(Integer::intValue).sum();
+        // return integers.stream().collect(Collectors.summingInt(Integer::intValue));
+        return integers.stream().reduce(Math::)
     }
 
     public static List<Integer> skip(List<Integer> integers, Integer toSkip){
